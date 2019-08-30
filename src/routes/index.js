@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import NewsView from '../views/NewsView'
-// import JobsView from '../views/JobsView'
-// import AskView from '../views/AskView'
+import NewsView from '../views/NewsView'
+import JobsView from '../views/JobsView'
+import AskView from '../views/AskView'
 import UserView from '../views/UserView'
 import ItemView from '../views/ItemView'
-import createListView from '../views/CreateListView'
+// import createListView from '../views/CreateListView'
 
 
 
@@ -21,17 +21,22 @@ export default new VueRouter({
         {
             name:'news',
             path:'/news',
-            component: createListView('NewsView HOC'),
+            // component: createListView('NewsView HOC'),
+            component: NewsView
         },
         {
             name:'ask',
             path:'/ask',
-            component: createListView('AskView HOC')
+            // component: createListView('AskView HOC')
+            component: AskView
+
         },
         {
-            name:'job',
-            path:'/job',
-            component: createListView('JobsView HOC'),
+            name:'jobs',
+            path:'/jobs',
+            // component: createListView('JobsView HOC'),
+            component: JobsView
+
         },
         {
             name:'user',

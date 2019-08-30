@@ -52,10 +52,12 @@ export default {
         });
       },
       FETCH_LIST({commit},name){
-        fetchList(name)
-        .then(({data}) => {
-            console.log(data)
-          commit('SET_LIST', data)
+        // use return for promie chaning
+        return fetchList(name)
+        .then((res) => {
+          commit('SET_LIST', res.data)
+          console.log(4)
+          return res;
         })
         .catch(err => {
           console.log(err.message);

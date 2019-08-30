@@ -59,26 +59,26 @@ export default {
           to: { path: "/news" }
         },
         { text: "Ask", icon: "mdi-cloud-question", to: "/ask" },
-        { text: "Jobs", icon: "mdi-laptop", to: "/job" }
+        { text: "Jobs", icon: "mdi-laptop", to: "/jobs" }
       ]
     };
   },
   methods:{
-    startSpiiner(){
+    startSpinner(){
       this.loading = true
     },
-    endSpiiner(){
+    endSpinner(){
       this.loading = false
     }
 
   },
   created(){
-    bus.$on('start:spinner', this.startSpiiner)
-    bus.$on('end:spinner', this.endSpiner)
+    bus.$on('start:spinner', this.startSpinner)
+    bus.$on('end:spinner', this.endSpinner)
   },
   beforeDestroy(){
-     bus.$off('start:spinner', this.startSpiiner)
-    bus.$off('end:spinner', this.endSpiner)
+     bus.$off('start:spinner', this.startSpinner)
+    bus.$off('end:spinner', this.endSpinner)
   },
   components: {
     ToolBar,
