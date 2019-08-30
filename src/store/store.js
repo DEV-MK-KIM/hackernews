@@ -14,7 +14,7 @@ export default new Vuex.Store({
     jobs: [],
     ask: [],
     user: {},
-    item: null,
+    item: {},
 
   },
   // mutations: mutations,

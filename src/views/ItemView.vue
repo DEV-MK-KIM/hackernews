@@ -11,6 +11,9 @@
             <p class="body-1 font-bold font-italic" v-html="item.content"></p>
           </v-card-text>
         </v-card>
+
+
+        
         <!-- comments number-->
         <v-card class="mt-5">
           <v-card-text>

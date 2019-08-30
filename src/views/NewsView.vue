@@ -1,5 +1,8 @@
 <template>
-    <v-container class="grey lighten-5">
+
+<ListItem></ListItem>
+
+    <!-- <v-container class="grey lighten-5">
       <h1 class="display-3 ml-4">NEWS</h1>
       <v-row no-gutters >
         <v-col>
@@ -25,18 +28,23 @@
           </v-card>
         </v-col>
       </v-row>
-    </v-container>
+    </v-container> -->
+    
 </template>
 
 <script>
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
+import ListItem from '../components/ListItem'
 export default {
-  computed: {
-    ...mapState(["news"])
-  },
-  created() {
-    this.$store.dispatch('FETCH_NEWS')
+  components:{
+    ListItem,
   }
+  // computed: {
+  //   ...mapState(["news"])
+  // },
+  // created() {
+  //   this.$store.dispatch('FETCH_NEWS')
+  // }
 };
 </script>
 

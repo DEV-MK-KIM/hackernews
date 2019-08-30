@@ -1,5 +1,6 @@
 <template>
-  <div>
+<UserProfile></UserProfile>
+  <!-- <div>
     <v-card
     class="mx-auto"
     width="700"
@@ -30,24 +31,20 @@
       <v-btn tile raised @click = "$router.go(-1)">Go Back</v-btn>
     </v-card-actions>
   </v-card>
-  </div>
+  </div> -->
 </template>
 
 <script>
-import moment from 'moment'
-import { mapState } from "vuex";
+import UserProfile from '../components/UsreProfile'
 export default {
+  components: {
+    UserProfile,
+  },
   created() {
     const userName = this.$route.params.id;
     console.log(userName);
     this.$store.dispatch("FETCH_USER", userName);
   },
-  computed: {
-    ...mapState(["user"])
-  },
-  filters: {
-    date: (value)=> moment.unix(value).format('llll')
-  }
 };
 </script>
 
