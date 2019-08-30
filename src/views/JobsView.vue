@@ -12,7 +12,7 @@
           :key="index"
         >
           <v-list-item-content class="ml-2">
-            <div class="overline mb-4">{{ item.domain }}</div>
+             <a class="overline mb-4" :href="`http://${item.domain}`">{{ item.domain }}</a>
             <v-list-item-title class="headline mb-5">
               <a :href="item.url">{{ item.title}}</a>
             </v-list-item-title>

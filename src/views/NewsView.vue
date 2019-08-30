@@ -12,11 +12,15 @@
             :key="index"
           >
             <v-list-item-content class="ml-2">
-              <div class="overline mb-4">{{ item.domain }}</div>
+              <a class="overline mb-4" :href="`http://${item.domain}`">{{ item.domain }}</a>
               <v-list-item-title class="headline mb-5">
                 <a :href="item.url">{{ item.title}}</a>
               </v-list-item-title>
-              <v-list-item-subtitle>{{ item.time_ago }} by {{ item.user }}</v-list-item-subtitle>
+              <v-list-item-subtitle>{{ item.time_ago }} by 
+                <router-link :to="`/user/${item.user}`">
+                {{ item.user }}
+                </router-link>
+                </v-list-item-subtitle>
             </v-list-item-content>
           </v-card>
         </v-col>
@@ -25,16 +29,13 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState(["news"])
   },
-  methods: {
-    ...mapActions(["FETCH_NEWS"])
-  },
   created() {
-    this.FETCH_NEWS();
+    this.$store.dispatch('FETCH_NEWS')
   }
 };
 </script>

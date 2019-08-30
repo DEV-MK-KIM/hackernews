@@ -13,12 +13,8 @@ export default new Vuex.Store({
     news: [],
     jobs: [],
     ask: [],
-
-  },
-  getters: {
-    get_news: (state)=> state.news,
-    get_jobs: (state)=> state.jobs,
-    get_ask: (state)=> state.ask,
+    user: {},
+    item: null,
 
   },
   // mutations: mutations,
