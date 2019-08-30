@@ -1,43 +1,55 @@
 <template>
   <div id="app">
-    <v-app>
-      <!-- Nav Bar -->
-      <ToolBar @pass = "drawer = true"></ToolBar>
+    <v-container>
+      <v-row>
+        <v-col cols="12">
+          <section>
+            <v-app>
+              <!-- Nav Bar -->
+              <ToolBar @pass="drawer = true"></ToolBar>
 
-      <!-- Navigation Drawer -->
-      <v-navigation-drawer v-model="drawer" temporary fixed>
-        <v-list shaped>
-          <v-subheader>Hackers News</v-subheader>
-          <v-list-item-group v-model="item" color="primary">
-            <v-list-item v-for="(item, i) in items" :key="i" :to="item.to">
-              <v-list-item-icon>
-                <v-icon v-text="item.icon"></v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.text"></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-navigation-drawer>
+              <!-- Navigation Drawer -->
+              <v-navigation-drawer v-model="drawer" temporary fixed>
+                <v-list shaped>
+                  <v-subheader>Hackers News</v-subheader>
+                  <v-list-item-group v-model="item" color="primary">
+                    <v-list-item v-for="(item, i) in items" :key="i" :to="item.to">
+                      <v-list-item-icon>
+                        <v-icon v-text="item.icon"></v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item.text"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </v-list>
+              </v-navigation-drawer>
 
-      <!-- Router View -->
-      
-      <v-content>
-        <transition name="fade">
-        <router-view id="router"></router-view>
-        </transition>
-      </v-content>
-    </v-app>
+              <!-- Router View -->
+
+              <v-content>
+                <transition name="fade">
+                  <router-view id="router"></router-view>
+                </transition>
+              </v-content>
+            </v-app>
+          </section>
+        </v-col>
+      </v-row>
+    </v-container>
+     <Spinner :loading="loading"></Spinner>
   </div>
 </template>
 
 <script>
 import ToolBar from "./components/ToolBar";
+import Spinner from "./components/Spinner";
+import bus from "./utils/bus"
 export default {
   name: "app",
   data() {
     return {
+      loading: false,
       drawer: false,
       item: 0,
       items: [
@@ -51,9 +63,27 @@ export default {
       ]
     };
   },
-  components: {
-    ToolBar
+  methods:{
+    startSpiiner(){
+      this.loading = true
+    },
+    endSpiiner(){
+      this.loading = false
+    }
+
   },
+  created(){
+    bus.$on('start:spinner', this.startSpiiner)
+    bus.$on('end:spinner', this.endSpiner)
+  },
+  beforeDestroy(){
+     bus.$off('start:spinner', this.startSpiiner)
+    bus.$off('end:spinner', this.endSpiner)
+  },
+  components: {
+    ToolBar,
+    Spinner
+  }
 };
 </script>
 
@@ -62,8 +92,6 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-  color: #2c3e50;
   margin-top: 0;
 }
 #router {
@@ -72,13 +100,21 @@ export default {
 ul {
   list-style-type: none;
 }
-a
-{text-decoration: none;
-color: black !important}
+a {
+  text-decoration: none;
+  color: black !important;
+}
+/* Spinner */
+
+.spinner {
+  align-content: center;
+  justify-content: center;
+}
 
 /* transition */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

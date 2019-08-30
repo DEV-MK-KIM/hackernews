@@ -10,11 +10,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    news: [],
-    jobs: [],
-    ask: [],
+    // news: [],
+    // jobs: [],
+    // ask: [],
     user: {},
     item: {},
+    list:[],
 
   },
   // mutations: mutations,

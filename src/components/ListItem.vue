@@ -55,35 +55,22 @@ import { mapState } from "vuex";
 export default {
   computed: {
     listItems() {
-      switch (this.$route.name) {
-        case "news":
-          return this.$store.state.news;
-          break;
+      // switch (this.$route.name) {
+      //   case "news":
+      //     return this.$store.state.news;
+      //     break;
 
-        case "job":
-          return this.$store.state.jobs;
-          break;
+      //   case "job":
+      //     return this.$store.state.jobs;
+      //     break;
 
-        case "ask":
-          return this.$store.state.ask;
-          break;
-      }
+      //   case "ask":
+      //     return this.$store.state.ask;
+      //     break;
+      // }
+      return this.$store.state.list
     }
   },
-  // created() {
-  //   switch (this.$route.name) {
-  //     case "news":
-  //       this.$store.dispatch("FETCH_NEWS");
-  //       break;
-  //     case "job":
-  //       return this.$store.dispatch("FETCH_JOBS");
-  //       break;
-
-  //     case "ask":
-  //       return this.$store.dispatch("FETCH_ASK");
-  //       break;
-  //   }
-  // }
 };
 </script>
 
