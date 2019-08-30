@@ -70,20 +70,20 @@ export default {
       }
     }
   },
-  created() {
-    switch (this.$route.name) {
-      case "news":
-        this.$store.dispatch("FETCH_NEWS");
-        break;
-      case "job":
-        return this.$store.dispatch("FETCH_JOBS");
-        break;
+  // created() {
+  //   switch (this.$route.name) {
+  //     case "news":
+  //       this.$store.dispatch("FETCH_NEWS");
+  //       break;
+  //     case "job":
+  //       return this.$store.dispatch("FETCH_JOBS");
+  //       break;
 
-      case "ask":
-        return this.$store.dispatch("FETCH_ASK");
-        break;
-    }
-  }
+  //     case "ask":
+  //       return this.$store.dispatch("FETCH_ASK");
+  //       break;
+  //   }
+  // }
 };
 </script>
 
