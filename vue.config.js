@@ -1,9 +1,12 @@
+// module.exports = {
+//   pluginOptions: {
+//     moment: {
+//       locales: [
+//         ''
+//       ]
+//     }
+//   }
+// }
 module.exports = {
-  pluginOptions: {
-    moment: {
-      locales: [
-        ''
-      ]
-    }
+  publicPath: '<Vue-Hackernews-API>'
   }
-}
