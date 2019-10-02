@@ -8,5 +8,7 @@
 //   }
 // }
 module.exports = {
-  publicPath: '<Vue-Hackernews-API>'
-  }
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/hackernews/'
+    : '/'
+}
